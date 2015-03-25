@@ -18,7 +18,8 @@ public class TypeTest {
 		// 数据的取值范围
 		// byte b=129;//赋值超过变量范围byte型-128~127
 		byte b = 126;
-		// double f=3.14;//3.14默认是double类型的，超出float的长度
+		double dd = 3.14;// 3.14默认是double类型的，超出float的长度
+		// float ff=3.14;
 		float f = 3.14f;
 
 		// =================================

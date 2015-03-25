@@ -1,4 +1,7 @@
 package cn.daizhe.lecture.ch1.C101;
+
+import java.util.List;
+
 /**
  * 第一个Java程序
  * @author daizhe
@@ -12,6 +15,8 @@ public class Hello {
 	public static void main(String args[]){
 		System.out.println("Hello World!");
 	}
+	List l;
+	int i;
 }
 /*
 编译和运行方法：

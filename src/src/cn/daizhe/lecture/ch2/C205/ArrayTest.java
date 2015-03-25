@@ -28,7 +28,9 @@ public class ArrayTest {
 		// System.out.println(a[0]);
 
 		// new操作符创建数组并用引用a指向该数组，创建时需给出数组的长度
-		a = new int[10];
+		// 创建数组时的长度可以用变量
+		int n = 20;
+		a = new int[n];
 
 		// 数组中的数据在new时将自动初始化，下面的代码将输出起默认值
 		System.out.println("数组数据的初始化：");
