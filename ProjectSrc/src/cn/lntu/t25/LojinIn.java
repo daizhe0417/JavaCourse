@@ -50,6 +50,7 @@ public class LojinIn extends JFrame {
 		Container content = getContentPane();
 		Color color=new Color(120,200,78);
 		content.setBackground(color);
+		
 		content.setLayout(null);
 		this.setTitle("就业管理系统");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,9 +60,8 @@ public class LojinIn extends JFrame {
 		this.setLocation((dim.width - this.getWidth()) / 2,
 				(dim.height - this.getHeight()) / 2);
 		
-		
 		jlabel = new JLabel(new ImageIcon(getClass().getResource(
-				"wel.jpg")));
+				"welcome.jpg")));
 		jlabel.setBounds(40, 5, 400, 100);
 		jlabel.setFocusable(true);
 		jlabel.setForeground(Color.red);
