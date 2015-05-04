@@ -1,23 +1,41 @@
 package cn.lntu.t25;
 
+
+
 public class Student {
 	
-	Student(){
-		
-	}
+	
 private String  name;
-private  int id;
-private  int idNumber;
-private  char  sex;
+private  Integer id;
+private  String idNumber;
+private  String  sex;
 private  String  address;
-private  String college;
-private  String major;
-private  int phoneNumber;
-private  int password;
-private  String  isemployment;
+private  Integer college_id;
+private  Integer major_id;
+private  String phoneNumber;
+private  String password;
+private  String  employment;
 
 
 
+Student(){
+	
+}
+Student(String name,int id,String idNumber,String sex,String address,int college_id,int major_id,String phoneNumber,String  password,String employment){
+	
+	this.id=id;
+	this.idNumber=idNumber;
+	this.sex=sex;
+	this.address=address;
+	this.college_id=college_id;
+	this.major_id=major_id;
+	this.name=name;
+	this.phoneNumber=phoneNumber;
+	this.employment=employment;
+	this.password=password;
+	
+	
+}
 public void  setName(String name){
 	this.name=name;
 	
@@ -38,24 +56,24 @@ public   int  getId(){
 	return  this.id;
 }
 
-public  void   setIdNumber(int idNumber){
+public  void   setIdNumber(String idNumber){
 	this.idNumber=idNumber;
 }
 
 
-public  int  getIdNumber(){
+public  String  getIdNumber(){
 	return  this.idNumber;
 	
 }
 
 
-public  void setSex(char  sex){
+public  void setSex(String  sex){
 	this.sex=sex;
 	
 }
 
 
-public  char getSex(){
+public  String getSex(){
 	return  this.sex;
 	
 }
@@ -72,65 +90,70 @@ public  String  getAddress(){
 
 
 
-public  void setCollege(String college){
-	this.college=college;
+public  void setCollege(int college_id){
+	this.college_id=college_id;
 	
 }
 
 
 
-public  String  getCollege(){
-	return this.college;
+public  int  getCollege(){
+	return this.college_id;
 }
 
 
 
-public  void setMajor(String major){
-	this.major=major;
+public  void setMajor(int major_id){
+	this.major_id=major_id;
 }
 
 
-public  String getMajor(){
+public int getMajor(){
 	
-	return this.major;
+	return this.major_id;
 }
 
 
 
-public  void setPhoneNumber(int phoneNumber){
+public  void setPhoneNumber(String phoneNumber){
 	this.phoneNumber=phoneNumber;
 }
 
 
-public  int getPhoneNumber(){
+public  String getPhoneNumber(){
 	return this.phoneNumber;
 }
 
 
 
-public  void setPassword(int password){
+public  void setPassword(String password){
 	this.password=password;
 }
 
 
 
-public  int getPassword(){
+public  String getPassword(){
 	return  this.password;
 }
 
 
 
 
-public  void setIsemployment(){
+public  void setEmployment(String str){
 	
-	this.isemployment="待业";
+	this.employment=str;
 }
 
 
 
-public String getIsemployment(){
-	return this.isemployment;
+public String isEmployment(){
+	return this.employment;
 }
 
+public  String  toString(){
+	
+	return "name :"+this.name+"id:"+this.id+"idnumber:"+this.idNumber+"address:"+this.address+"sex:"+this.sex+"employment?:"+this.employment;
+	
+}
 
 }

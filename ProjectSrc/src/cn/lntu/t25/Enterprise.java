@@ -1,18 +1,30 @@
 package cn.lntu.t25;
 
+
+
 public class Enterprise {
 
-	Enterprise()	{
-		
-	}
-	private  int  id;
+
+	private  Integer  id;
 	private String name;
 	private  String address;
 	private String email;
-	private int phoneNumber;
-	private  int password;
+	private String phoneNumber;
+	private  String password;
 	
 	
+	Enterprise()	{
+		
+	}
+	Enterprise(int  id,String name,String address,String email,String phoneNumber,String password)	{
+		this.id=id;
+		this.name=name;
+		this.address=address;
+		this.phoneNumber=phoneNumber;
+		this.password=password;
+		
+		
+	}
 	
 	public  void setId(int id){
 		this.id=id;
@@ -48,20 +60,24 @@ public class Enterprise {
 		return  this.email;
 	}
 	
-	public  void setPhoneNumber(int phoneNumber){
+	public  void setPhoneNumber(String phoneNumber){
 		this.phoneNumber=phoneNumber;
 	}
 	
-	public  int getPhoneNumber(){
+	public String getPhoneNumber(){
 		return this.phoneNumber;
 	}
 	
-	public  void setPassword(int password){
+	public  void setPassword(String password){
 		this.password=password;
 	}
 	
-	public  int getPassword(){
+	public  String getPassword(){
 		return  this.password;
+	}
+	public   String  toString(){
+		return  "name:"+this.name+"address:"+this.address+"email:"+this.email+"phonenumber:"+this.phoneNumber;
+		
 	}
 	
 }

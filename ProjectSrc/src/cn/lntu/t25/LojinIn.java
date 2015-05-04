@@ -12,6 +12,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -149,7 +150,7 @@ public class LojinIn extends JFrame {
 				try {
 					login();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+			
 					e.printStackTrace();
 				}
 			}
@@ -161,12 +162,11 @@ public class LojinIn extends JFrame {
 				try {
 					login();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
+				}		
 				}
-
-			}
 		});
 	    jlabel2=new JLabel("登录身份");
 	    jlabel2.setBounds(20, 250, 80, 40);
@@ -177,16 +177,14 @@ public class LojinIn extends JFrame {
 	    content.add(combox);
 	    combox.setSelectedIndex(0);
 	    choose=(String) combox.getSelectedItem();
-	   // combox.updateUI();
+	 
 		combox.addItemListener(new ItemListener(){
 
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
-				// TODO Auto-generated method stub
+				
 				choose=(String) arg0.getItem();
 			}});
-
-     
 		repaint();
 	}
 
@@ -205,13 +203,13 @@ public class LojinIn extends JFrame {
 			 
 			String sql="select * from admin_user where id=?";
 		    this.validation(sql);
-		 if(this.password==paw){
+		 if(this.password.equals(paw)){
 			 
-			 new adminClient(id,password);
+			 new SchoolAdminClient(id,password);
 			 this.dispose();
 		 }
 		 else{
-			 JOptionPane.showMessageDialog(this, "账号或密码错误");
+			 JOptionPane.showMessageDialog(this, "密码错误");
 			 jt1.setText("");
 			 jp.setText("");
 			 
@@ -221,36 +219,31 @@ public class LojinIn extends JFrame {
 		  
 		  //企业端处理
 		  if(choose==item[1]){
-				 
-			 
 			  String sql="select * from enter_user where id=?";
 			  this.validation(sql);
-		 if(this.password==paw){
+		 if(this.password.equals(paw)){
 			 
 			 new EnterpriseClient(id,password);
 			 this.dispose();
 		 }
 		 else{
-			 JOptionPane.showMessageDialog(this, "账号或密码错误");
+			 JOptionPane.showMessageDialog(this, "密码错误");
 			 jt1.setText("");
 			 jp.setText("");
 			 
 		 }    
-			  
-		  }	
+		 }	
 		  
 		//学生端处理
-			if(choose==item[2]){
-				 
-				 
+			if(choose==item[2]){ 
 				  String sql="select * from stu_user where id=?";
 				  this.validation(sql);
-			   if(this.password==paw){ 
-				 new adminClient(id,password);
+			   if(this.password.equals(paw)){ 
+				 new StudentClient(id,password);
 				 this.dispose();
 			 }
 			 else{
-				 JOptionPane.showMessageDialog(this, "账号或密码错误");
+				 JOptionPane.showMessageDialog(this, "密码错误");
 				 jt1.setText("");
 				 jp.setText("");
 				 
@@ -264,26 +257,23 @@ public class LojinIn extends JFrame {
 	public  void   validation(String sql)throws  SQLException{
 		
 	  try {
-		myconn=MyConnection.getConnection();
+		myconn=DatabaseConnection.getConnection();
 		mystate=myconn.prepareStatement(sql);
+		mystate.setInt(1,id);
+		  ResultSet  res=mystate.executeQuery();
+		 while(res.next()){
+			paw=res.getString("password");}
+		 res.close();
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	  mystate.setInt(1, id);
-	  ResultSet  res=mystate.executeQuery();
-	 while(res.next()){
-		paw=res.getString("password");
-		 
-	 }
-	 res.close();
-	 mystate.close();
-	 myconn.close();
-	
-	  }
 		
+		e.printStackTrace();
+	}finally{
+		 mystate.close(); 
+		 myconn.close();
+		}
+	}
 	
-	
+	  
 	
 	public static void main(String[] args) {
 		new LojinIn();
