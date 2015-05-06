@@ -62,6 +62,9 @@ class StuUserService {
 		return  flag;}
 }
 
+
+
+
 class  AdminUserService {
 	
 	private Connection conn;
@@ -80,6 +83,7 @@ class  AdminUserService {
 				adminUser.setId(re.getInt("id"));
 				adminUser.setPassword(re.getString("password"));
 			}
+		
 			re.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -115,6 +119,11 @@ class  AdminUserService {
 				e.printStackTrace();}}
 		return  flag;}
 }
+
+
+
+
+
 class  EnterUserService{
 	
 	private Connection conn;
@@ -133,6 +142,7 @@ class  EnterUserService{
 				enterUser.setId(re.getInt("id"));
 				enterUser.setPassword(re.getString("password"));
 			}
+			
 			re.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

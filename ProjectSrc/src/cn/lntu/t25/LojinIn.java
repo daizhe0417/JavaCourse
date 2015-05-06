@@ -35,7 +35,7 @@ public class LojinIn extends JFrame {
 	private JTextField jt1;
 	private JPasswordField jp;
 	private  JComboBox<String>  combox;
-	private String choose,password,paw;
+	private String choose,password;
 	private int id;
 	private String [] item={"管理员","企业","学生"};
 	
@@ -215,7 +215,7 @@ public class LojinIn extends JFrame {
 				 jt1.setText("");
 			      jp.setText("");
 			 }
-			 else {if(user.getPassword().equals(paw)){
+			 else {if(user.getPassword().equals(password)){
 			        new SchoolAdminClient(id,password);
 			       this.dispose(); }
 		         else{
@@ -231,9 +231,9 @@ public class LojinIn extends JFrame {
 					 jt1.setText("");
 				      jp.setText("");
 				 }
-				 else{ if(user.getPassword().equals(paw)){
-			    new EnterpriseClient(id,password);
-			     this.dispose(); }
+				 else{ if(user.getPassword().equals(password)){
+			      new EnterpriseClient(id,password);
+			       this.dispose(); }
 		 else{
 			 JOptionPane.showMessageDialog(this, "密码错误");
 			 jt1.setText("");
@@ -248,7 +248,7 @@ public class LojinIn extends JFrame {
 					 jt1.setText("");
 				      jp.setText("");
 				 }
-				 else{if(user.getPassword().equals(paw)){ 
+				 else{if(user.getPassword().equals(password)){ 
 				 new StudentClient(id,password);
 				 this.dispose();
 			 }
