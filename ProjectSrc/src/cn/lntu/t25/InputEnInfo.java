@@ -2,8 +2,7 @@ package cn.lntu.t25;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,7 +14,7 @@ import javax.swing.JTextField;
 
 class  InputEnInfo  extends  JPanel  implements ActionListener{
     /**
-	 * 
+	 * 学校管理员录入学生信息
 	 */
 	private static final long serialVersionUID = 1L;
 	private  Enterprise  enterprise;

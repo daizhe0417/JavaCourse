@@ -17,7 +17,10 @@ import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class ChangePassword extends JPanel implements ActionListener {
+	/*密码修改
 
+
+     */
 	private String pwd,sql;
 	private int  id;
 

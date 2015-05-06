@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-	
+	//获得数据库连接
 	
 	public static Connection   getConnection()  {
 		String driver = "com.mysql.jdbc.Driver";

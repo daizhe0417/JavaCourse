@@ -1,6 +1,7 @@
 package cn.lntu.t25;
 
 class MyNode {
+	//树的节点类
 	private  String  name;
 	private  int  index;
 	MyNode(String  name,int index){

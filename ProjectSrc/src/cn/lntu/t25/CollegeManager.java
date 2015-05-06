@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 public class CollegeManager extends JPanel implements  ActionListener,Runnable,ItemListener{
 
 
-	/**
+	/**增加学院和专业的界面
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -155,7 +155,7 @@ public class CollegeManager extends JPanel implements  ActionListener,Runnable,I
 				text.requestFocus();
 			}
 			else{
-				college=new College();
+				college=new College();//增加学院
 				college.setName(text.getText());
 				college.setId(Integer.parseInt(colltext.getText()));
 				CollegeService service = new CollegeService();
@@ -179,7 +179,7 @@ public class CollegeManager extends JPanel implements  ActionListener,Runnable,I
 				
 			}
 			if(!(text1.getText().equals("")&&text2.getText().equals(""))){
-				Major major = new  Major();
+				Major major = new  Major();//增加专业
 				MajorService  service=new MajorService();
 				major.setCollege(collegemap.get(collegebox.getSelectedItem()));
 				major.setName(text1.getText());
@@ -252,7 +252,7 @@ public class CollegeManager extends JPanel implements  ActionListener,Runnable,I
 		
 	}
 
-	private  void initialComboBox(){
+	private  void initialComboBox(){//显示所有学院
 		CollegeService service = new CollegeService();
 		collegemap=service.queryAllCollege();
 		Set<String> collegename=new HashSet<String>();
@@ -277,7 +277,7 @@ public class CollegeManager extends JPanel implements  ActionListener,Runnable,I
 
 
 	@Override
-	public void itemStateChanged(ItemEvent e) {
+	public void itemStateChanged(ItemEvent e) {//当组合框中所选学院改变时，将对应的专业组合框中专业改变
         if(e.getSource()==collegebox){	
 			 MajorService majorservice = new  MajorService();
 			 String  collegename=(String) collegebox.getSelectedItem();

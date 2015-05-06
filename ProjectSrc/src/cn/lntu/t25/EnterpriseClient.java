@@ -18,7 +18,7 @@ import javax.swing.tree.DefaultTreeModel;
 public class EnterpriseClient extends JFrame implements MainFrame{
 
 	/**
-	 * 
+	 * 企业端  用树形和卡片布局实现
 	 */
 	private static final long serialVersionUID = -4291512066492333923L;
     private  Integer id;

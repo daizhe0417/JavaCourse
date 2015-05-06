@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 public class InputStuInfo extends  JPanel implements ActionListener ,ItemListener,Runnable{
 	
 	/**
-	 * 
+	 * 学校管理员录入企业信息
 	 */
 	private static final long serialVersionUID = 2596684801306957742L;
 	private JLabel [] label={new JLabel("学号(*)"),new JLabel("姓名(*)"),new  JLabel("性别(*)"),new JLabel("身份证号(*)"),new JLabel("籍贯(*)"),new JLabel("学院(*)"),new JLabel("专业(*)"),new JLabel("联系方式")};

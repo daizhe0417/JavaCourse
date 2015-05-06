@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class CheckInformation extends JPanel implements  ActionListener{
 	/**
-	 * 
+	 * 学生端  查看企业发布的职位需求信息
 	 */
 	private static final long serialVersionUID = 1L;
 	private   String [] coll_name={"企业名","职位名","查看"};
@@ -61,9 +61,9 @@ public class CheckInformation extends JPanel implements  ActionListener{
 	}
 
 	private void addListener() {
-		
+	
 		show.addActionListener(this);
-		table.addMouseListener(new MouseAdapter(){
+		table.addMouseListener(new MouseAdapter(){//table面板点击可查看对应的职位信息
 			public  void mousePressed(MouseEvent e){
 			if(table.getSelectedColumn()==2){
 			int choose=	JOptionPane.showConfirmDialog(getParent(), "确认查看？");
@@ -105,7 +105,7 @@ class ShowInfor extends  JFrame implements  ActionListener,Runnable{
 	
 	
 	/**
-	 * 
+	 * 学生端点击查看后弹出该职位和该公司的具体信息
 	 */
 	private static final long serialVersionUID = 1L;
 	private  String  entername,jobname;
@@ -126,7 +126,7 @@ class ShowInfor extends  JFrame implements  ActionListener,Runnable{
 		this.stu_id=id;
 		run();
 	}
-	private void initial() {
+	private void initial() {//界面
 		 Container   content=this.getContentPane();
 		  content.setLayout(null);
 		  this.setVisible(true);
@@ -221,7 +221,7 @@ class ShowInfor extends  JFrame implements  ActionListener,Runnable{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==submit){
 			
-			if(count==1){
+			if(count==1){//学生点击提交申请后，将学生信息及对应的公司和职位名等存入数据库
 				Form  form=new Form();
 				FormService  formser=new FormService();
 				form.setEntername(entername);

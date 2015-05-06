@@ -14,7 +14,7 @@ public class StudentService {
 private Connection conn;
 private PreparedStatement state;
 private Student student;
-
+//学生表的数据据库操作
 
 public  boolean  saveStudent(Student  student){
 	boolean flag=true;

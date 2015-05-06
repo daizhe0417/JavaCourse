@@ -20,7 +20,7 @@ import javax.swing.tree.DefaultTreeModel;
 
 public class SchoolAdminClient extends JFrame implements MainFrame,Runnable{
 
-	
+	//学校管理员端
 	private static final long serialVersionUID = -2976953786977125434L;
     private  int id;
     private  String password,sql;

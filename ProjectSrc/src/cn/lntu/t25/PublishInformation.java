@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 public class PublishInformation extends JPanel implements ActionListener,ItemListener {
 	/**
-	 * 
+	 * 企业发布职位信息
 	 */
 	private static final long serialVersionUID = 1L;
 	private  JLabel [] label={new  JLabel("职称"),new  JLabel("岗位职责描述"),new  JLabel("技能要求"),new  JLabel("招聘数量"),new  JLabel("性别"),new  JLabel("年龄"),new  JLabel("说明")};

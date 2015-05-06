@@ -12,7 +12,7 @@ public class JobService {
 	private Connection conn;
 	private PreparedStatement state;
 	private  Job  job;
-	
+	//职位表的数据库操作
 	
 public  boolean  saveJob(Job  job){
 		boolean  flag=true;

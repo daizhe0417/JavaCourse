@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
 public class EnterpriseProcess extends JPanel implements  ActionListener{
 
 	/**
-	 * 
+	 * 企业管理员查看本企业当前的有多少求职信息及处理
 	 */
 	private static final long serialVersionUID = 1L;
     private Integer id;
@@ -126,7 +126,7 @@ class  ShowStudentInformation extends JFrame  implements  ActionListener,Runnabl
 	
 	
 	/**
-	 * 
+	 * 企业端管理员点击查看学生信息后弹出学生的信息
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer stuid;

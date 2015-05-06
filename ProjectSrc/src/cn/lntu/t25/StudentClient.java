@@ -18,7 +18,7 @@ import javax.swing.tree.DefaultTreeModel;
 public class StudentClient extends JFrame implements MainFrame{
 
 	/**
-	 * 
+	 * 学生等路端
 	 */
 	private static final long serialVersionUID = 3302467460328717024L;
     private  int id;

@@ -14,7 +14,7 @@ private Connection conn;
 private PreparedStatement state;
 
 
-
+//对申请表的数据库操作
 public  boolean  saveForm(Form  form){
 	boolean  flag=true;
 	conn=DatabaseConnection.getConnection();

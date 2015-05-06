@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 public class LojinIn extends JFrame {
 
 	/**
-	 * 
+	 * 登录界面，选择登录身份
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel jzhanghao, jpassword, jlabel,jlabel2;
@@ -38,11 +38,92 @@ public class LojinIn extends JFrame {
 	private String choose,password,paw;
 	private int id;
 	private String [] item={"管理员","企业","学生"};
-	private PreparedStatement	mystate;
-	private Connection myconn;
+	
 	public LojinIn() {
 		create();
+		addListener();
 
+	}
+
+	private void addListener() {
+		
+		jt1.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent key) {
+				int keytype = key.getKeyCode();
+				if (keytype == KeyEvent.VK_DOWN) {
+					jp.requestFocusInWindow();
+				}
+			}
+
+		});
+		jt1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == jt1) {
+					jp.requestFocus(true);
+				}
+
+			}
+
+		});
+		jp.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent key) {
+				int keytype = key.getKeyCode();
+				if (keytype == KeyEvent.VK_UP) {
+					jt1.requestFocusInWindow();
+				}
+
+			}
+
+		});
+		jp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if (e.getSource() == jp) {
+					jlogin.requestFocus(true);
+				}
+			}
+		});
+		jlogin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				try {
+					login();
+				} catch (SQLException e) {
+			
+					e.printStackTrace();
+				}
+			}
+		});
+		jlogin.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent key) {
+				int keytype = key.getKeyCode();
+				if (keytype == KeyEvent.VK_ENTER) {
+				try {
+					login();
+				} catch (SQLException e) {
+				
+					e.printStackTrace();
+				}
+				}		
+				}
+		});
+		combox.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				
+				choose=(String) arg0.getItem();
+			}});
 	}
 
 	private void create() {
@@ -85,55 +166,14 @@ public class LojinIn extends JFrame {
 		jt1.setBounds(200, 120, 200, 40);
 		jt1.setBorder(BorderFactory.createEtchedBorder());
 		jt1.requestFocus(true);
-		jt1.addKeyListener(new KeyAdapter() {
-
-			@Override
-			public void keyPressed(KeyEvent key) {
-				int keytype = key.getKeyCode();
-				if (keytype == KeyEvent.VK_DOWN) {
-					jp.requestFocusInWindow();
-				}
-			}
-
-		});
+		
 		content.add(jt1);
-		jt1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == jt1) {
-					jp.requestFocus(true);
-				}
-
-			}
-
-		});
+		
 
 		jp = new JPasswordField();
 		jp.setBounds(200, 165, 200, 40);
 		jp.setBorder(BorderFactory.createEtchedBorder());
-		jp.addKeyListener(new KeyAdapter() {
-
-			@Override
-			public void keyPressed(KeyEvent key) {
-				int keytype = key.getKeyCode();
-				if (keytype == KeyEvent.VK_UP) {
-					jt1.requestFocusInWindow();
-				}
-
-			}
-
-		});
-		jp.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if (e.getSource() == jp) {
-					jlogin.requestFocus(true);
-				}
-			}
-		});
+		
 		content.add(jp);
 
 		jlogin = new JButton("login");
@@ -142,32 +182,7 @@ public class LojinIn extends JFrame {
 		jlogin.setBorder(BorderFactory.createRaisedBevelBorder());
 
 		content.add(jlogin);
-		jlogin.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				try {
-					login();
-				} catch (SQLException e) {
-			
-					e.printStackTrace();
-				}
-			}
-		});
-		jlogin.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent key) {
-				int keytype = key.getKeyCode();
-				if (keytype == KeyEvent.VK_ENTER) {
-				try {
-					login();
-				} catch (SQLException e) {
-				
-					e.printStackTrace();
-				}
-				}		
-				}
-		});
+		
 	    jlabel2=new JLabel("登录身份");
 	    jlabel2.setBounds(20, 250, 80, 40);
 	    content.add(jlabel2);
@@ -177,14 +192,6 @@ public class LojinIn extends JFrame {
 	    content.add(combox);
 	    combox.setSelectedIndex(0);
 	    choose=(String) combox.getSelectedItem();
-	 
-		combox.addItemListener(new ItemListener(){
-
-			@Override
-			public void itemStateChanged(ItemEvent arg0) {
-				
-				choose=(String) arg0.getItem();
-			}});
 		repaint();
 	}
 
@@ -200,45 +207,48 @@ public class LojinIn extends JFrame {
 		  
 		  //管理员登录处理
 		  if(choose==item[0]){
-			 
-			String sql="select * from admin_user where id=?";
-		    this.validation(sql);
-		 if(this.password.equals(paw)){
-			 
-			 new SchoolAdminClient(id,password);
-			 this.dispose();
-		 }
-		 else{
-			 JOptionPane.showMessageDialog(this, "密码错误");
-			 jt1.setText("");
-			 jp.setText("");
-			 
-		 }  
-		  }
-		  
-		  
+			
+			 AdminUserService service=new AdminUserService();
+			 AdminUser user= service.queryUser(id);
+			 if(user.getId()==0){
+				 JOptionPane.showMessageDialog(this, "用户名不存在"); 
+				 jt1.setText("");
+			      jp.setText("");
+			 }
+			 else {if(user.getPassword().equals(paw)){
+			        new SchoolAdminClient(id,password);
+			       this.dispose(); }
+		         else{
+			     JOptionPane.showMessageDialog(this, "密码错误");
+			     jt1.setText("");
+			      jp.setText(""); } }}  
 		  //企业端处理
 		  if(choose==item[1]){
-			  String sql="select * from enter_user where id=?";
-			  this.validation(sql);
-		 if(this.password.equals(paw)){
-			 
-			 new EnterpriseClient(id,password);
-			 this.dispose();
-		 }
+			EnterUserService service=new EnterUserService();
+				 EnterUser user= service.queryUser(id);
+				 if(user.getId()==0){
+					 JOptionPane.showMessageDialog(this, "用户名不存在"); 
+					 jt1.setText("");
+				      jp.setText("");
+				 }
+				 else{ if(user.getPassword().equals(paw)){
+			    new EnterpriseClient(id,password);
+			     this.dispose(); }
 		 else{
 			 JOptionPane.showMessageDialog(this, "密码错误");
 			 jt1.setText("");
-			 jp.setText("");
-			 
-		 }    
-		 }	
+			 jp.setText("");}    }	}
 		  
 		//学生端处理
 			if(choose==item[2]){ 
-				  String sql="select * from stu_user where id=?";
-				  this.validation(sql);
-			   if(this.password.equals(paw)){ 
+				StuUserService service=new StuUserService();
+				 StuUser user= service.queryUser(id);
+				 if(user.getId()==0){
+					 JOptionPane.showMessageDialog(this, "用户名不存在"); 
+					 jt1.setText("");
+				      jp.setText("");
+				 }
+				 else{if(user.getPassword().equals(paw)){ 
 				 new StudentClient(id,password);
 				 this.dispose();
 			 }
@@ -248,32 +258,8 @@ public class LojinIn extends JFrame {
 				 jp.setText("");
 				 
 			 } 		
-			}		
-		}	
+			}		}	}
 	}
-	
-	
-	
-	public  void   validation(String sql)throws  SQLException{
-		
-	  try {
-		myconn=DatabaseConnection.getConnection();
-		mystate=myconn.prepareStatement(sql);
-		mystate.setInt(1,id);
-		  ResultSet  res=mystate.executeQuery();
-		 while(res.next()){
-			paw=res.getString("password");}
-		 res.close();
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	}finally{
-		 mystate.close(); 
-		 myconn.close();
-		}
-	}
-	
-	  
 	
 	public static void main(String[] args) {
 		new LojinIn();

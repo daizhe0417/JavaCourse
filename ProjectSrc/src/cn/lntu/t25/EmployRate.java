@@ -21,7 +21,7 @@ public class EmployRate extends JPanel  implements ActionListener,ItemListener{
 	
 	
 	/**
-	 * 
+	 * 查看各学院或专业的就业率
 	 */
    private static final long serialVersionUID = -2976954389070263008L;
    private  String [] item={"学院","专业"};

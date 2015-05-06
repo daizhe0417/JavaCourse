@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CollegeService {
-
+public class CollegeService { 
+	    //  对学院的数据库操作
 	private Connection conn;
 	private PreparedStatement state;
 	private College college;

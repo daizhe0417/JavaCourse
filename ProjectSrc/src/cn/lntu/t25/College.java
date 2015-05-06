@@ -1,7 +1,7 @@
 package cn.lntu.t25;
 
 public class College {
-	
+	//学院信息
 	
 	private  Integer id;
 	private String  name;

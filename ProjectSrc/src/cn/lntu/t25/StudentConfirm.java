@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentConfirm extends JPanel{
      /**
-	 * 
+	 * 在企业确认接收学生后，学生在次确认，并对专业院系就业人数等修改
 	 */
 	 private static final long serialVersionUID = 1L;
 	 private Integer  id;

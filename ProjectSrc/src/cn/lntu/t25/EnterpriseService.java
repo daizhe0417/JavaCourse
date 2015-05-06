@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EnterpriseService {
-
+      //企业表的数据库操作
 	private Connection conn;
 	private PreparedStatement state;
 	private  Enterprise  enterprise;

@@ -9,7 +9,7 @@ private  String status;
 
 Form(){
 	
-}
+}//处理表单
 Form(String entername,Integer studnetId,String  jobname,String resume,String  status){
 	this.entername=entername;
 	this.Jobname=jobname;
