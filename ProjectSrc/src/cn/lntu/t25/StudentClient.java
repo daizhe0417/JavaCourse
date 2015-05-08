@@ -22,7 +22,8 @@ public class StudentClient extends JFrame implements MainFrame{
 	 */
 	private static final long serialVersionUID = 3302467460328717024L;
     private  int id;
-    private  String password,sql;
+    private  String password;
+    private  StuUserService  service=new StuUserService();
 	private  DefaultMutableTreeNode  root=new DefaultMutableTreeNode(new MyNode("菜单",0)); 
 	private  DefaultMutableTreeNode  root1=new DefaultMutableTreeNode(new MyNode("求职信息处理",1)); 
 	private  DefaultMutableTreeNode  root2=new DefaultMutableTreeNode(new MyNode("系统选项",2)); 
@@ -121,8 +122,8 @@ public class StudentClient extends JFrame implements MainFrame{
 	@Override
 	public void initialPanel() {
 		welcome=new Welcome();
-		sql="update  stu_user set password=?   where  id=? ";
-		change=new ChangePassword(id,password,sql);
+	
+		change=new ChangePassword(id,password,service);
 		checkinfor=new CheckInformation(id);
 		confirm=new StudentConfirm(id);
 	}

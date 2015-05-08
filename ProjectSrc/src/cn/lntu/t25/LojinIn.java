@@ -62,10 +62,14 @@ public class LojinIn extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == jt1) {
-					jp.requestFocus(true);
-				}
-
+			try{	@SuppressWarnings("unused")
+			int id=Integer.parseInt(jt1.getText());
+			jp.requestFocus();}
+			catch (Exception e1){
+				JOptionPane.showMessageDialog(getParent(), "账号格式错误！");
+				jt1.setText("");
+				jt1.requestFocus();
+			}      
 			}
 
 		});
@@ -96,24 +100,30 @@ public class LojinIn extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				try {
-					login();
-				} catch (SQLException e) {
-			
-					e.printStackTrace();
-				}
+				try{
+					id=Integer.parseInt(jt1.getText());
+				login();
+				  }catch(Exception e){
+					  JOptionPane.showMessageDialog(getParent(), "账号格式错误！");
+						jt1.setText("");
+						jt1.requestFocus();
+						
+				  }
 			}
 		});
 		jlogin.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent key) {
 				int keytype = key.getKeyCode();
 				if (keytype == KeyEvent.VK_ENTER) {
-				try {
-					login();
-				} catch (SQLException e) {
-				
-					e.printStackTrace();
-				}
+				try{
+					id=Integer.parseInt(jt1.getText());
+				login();
+				  }catch(Exception e){
+					  JOptionPane.showMessageDialog(getParent(), "账号格式错误！");
+						jt1.setText("");
+						jt1.requestFocus();
+						
+				  }
 				}		
 				}
 		});
@@ -202,7 +212,7 @@ public class LojinIn extends JFrame {
 		if(jt1.getText().equals("")||jp.getPassword().equals(""))
 			JOptionPane.showMessageDialog(this, "请输入信息");
 		else{
-		  id=Integer.parseInt(jt1.getText().trim());
+		  
 		  password=String.valueOf(jp.getPassword());
 		  
 		  //管理员登录处理
@@ -258,8 +268,8 @@ public class LojinIn extends JFrame {
 				 jp.setText("");
 				 
 			 } 		
-			}		}	}
-	}
+			}		}	}}
+	
 	
 	public static void main(String[] args) {
 		new LojinIn();

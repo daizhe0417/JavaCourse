@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -57,6 +60,10 @@ class  InputEnInfo  extends  JPanel  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	if(e.getSource()==textfield[0]){
+		String str=textfield[0].getText().toString();
+		if(str.length()!=5){
+			JOptionPane.showMessageDialog(getParent(), "格式错误");
+		}
 		if(textfield[0].getText().equals("")){
 		JOptionPane.showMessageDialog(getParent(), "内容不能为空");
 		}
@@ -85,16 +92,18 @@ if(e.getSource()==textfield[3]){
 	if(textfield[3].getText().equals("")){
 		JOptionPane.showMessageDialog(getParent(), "内容不能为空");
 		}
-		/*else{
-				Pattern pattern = Pattern.compile("^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-				Matcher matcher = pattern.matcher(textfield[2].getText().toString());
+		else{
+			 String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+		       Pattern regex = Pattern.compile(check);
+		       Matcher matcher = regex.matcher(textfield[3].getText().toString());
 				if(!matcher.matches()){
 					JOptionPane.showMessageDialog(getParent(), "邮箱格式错误");
 					textfield[3].requestFocus();
-				}*/
+				}
 			
 				else{textfield[4].requestFocus();}
 		}
+	}
 
 if(e.getSource()==textfield[4]){
 	if(textfield[4].getText().equals("")){
@@ -182,9 +191,17 @@ class  EnterpriseInforQU  extends JPanel  implements ActionListener{
         if(e.getSource()==query){
         	if(text[0].getText().equals("")){
         	JOptionPane.showMessageDialog(getParent(), "编号不能为空");}
+        	
+        	
         	else{
+        		String str=text[0].getText().toString();
+        		if(str.length()!=5){
+        			JOptionPane.showMessageDialog(getParent(), "格式错误");
+        			text[0].requestFocus();
+        		}
+        		try{int id=Integer.parseInt(text[0].getText());
         		service=new  EnterpriseService();
-             	enterprise=service.queryEnterprise(Integer.parseInt(text[0].getText()));
+             	enterprise=service.queryEnterprise(id);
              	text[1].setText(enterprise.getName());
              	text[2].setText(enterprise.getAddress());
              	text[3].setText(enterprise.getEmail());
@@ -194,6 +211,11 @@ class  EnterpriseInforQU  extends JPanel  implements ActionListener{
              	text[2].setEditable(false);
     			text[3].setEditable(true);
     			text[4].setEditable(true);
+        		}
+        		catch(Exception  e1){
+        			JOptionPane.showMessageDialog(getParent(), "请输入数字");
+        		}
+        		
         	}
         }
 

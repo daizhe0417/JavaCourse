@@ -2,9 +2,6 @@ package cn.lntu.t25;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 
@@ -21,7 +18,8 @@ public class ChangePassword extends JPanel implements ActionListener {
 
 
      */
-	private String pwd,sql;
+	private String pwd;
+	private  Service service;
 	private int  id;
 
 
@@ -31,13 +29,11 @@ public class ChangePassword extends JPanel implements ActionListener {
 	private JPasswordField[] jpfArray = { new JPasswordField(),
 			new JPasswordField(), new JPasswordField() };
 	private JButton[] jbArray = { new JButton("确认"), new JButton("重置") };
-	private Connection conn;
-	private PreparedStatement state;
 	
-	public ChangePassword(int id, String password,String  sql) {
+	public ChangePassword(int id, String password,Service service) {
 		this.pwd = password;
 		this.id = id;
-		this.sql=sql;
+		this.service=service;
 		this.initialFrame();
 		this.addListener();
 	}
@@ -57,15 +53,15 @@ public class ChangePassword extends JPanel implements ActionListener {
 	private void initialFrame() {
 		this.setLayout(null);
 		for (int i = 0; i < jlArray.length; i++) {
-			jlArray[i].setBounds(100, 20 + 50 * i, 150, 30);
+			jlArray[i].setBounds(100, 50 + 50 * i, 150, 30);
 			this.add(jlArray[i]);
-			jpfArray[i].setBounds(300, 20 + 50 * i, 150, 30);
+			jpfArray[i].setBounds(300, 50 + 50 * i, 150, 30);
 			this.add(jpfArray[i]);
 
 		}
-		jbArray[0].setBounds(200, 230, 100, 30);
+		jbArray[0].setBounds(200, 400, 100, 30);
 		this.add(jbArray[0]);
-		jbArray[1].setBounds(400, 230, 100, 30);
+		jbArray[1].setBounds(400, 400, 100, 30);
 		this.add(jbArray[1]);
 	}
 
@@ -130,26 +126,11 @@ public class ChangePassword extends JPanel implements ActionListener {
 			}
 
 			else {
-				conn=DatabaseConnection.getConnection();
-			try {
-				state=	conn.prepareStatement(sql);
-			    state.setString(1,newPwd1);
-			    state.setInt(2, id);
-				state.executeUpdate();
-			} 
-			catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}finally{
-				try {
-					state.close();
-					conn.close();
-					JOptionPane.showMessageDialog(getParent(), "操作成功!");
-				} catch (SQLException e1) {
-				
-					e1.printStackTrace();
+				if(service.update(newPwd1, id)){
+					
+					JOptionPane.showMessageDialog(getParent(), "操作成功");
 				}
-			}
+				else{JOptionPane.showMessageDialog(getParent(), "操作失败");}
 			}
 		}
 	}

@@ -23,7 +23,8 @@ public class SchoolAdminClient extends JFrame implements MainFrame,Runnable{
 	//学校管理员端
 	private static final long serialVersionUID = -2976953786977125434L;
     private  int id;
-    private  String password,sql;
+    private  String password;
+    private  AdminUserService  service=new  AdminUserService();
 	private  DefaultMutableTreeNode  root=new DefaultMutableTreeNode(new MyNode("菜单",0));
 	private  DefaultMutableTreeNode  root1=new DefaultMutableTreeNode(new MyNode("学生信息管理",1));
 	private  DefaultMutableTreeNode  root2=new DefaultMutableTreeNode(new  MyNode("企业信息管理",2));
@@ -157,8 +158,8 @@ public class SchoolAdminClient extends JFrame implements MainFrame,Runnable{
 	@Override
 	public void initialPanel() {
 		welcome=new Welcome();
-		sql="update  admin_user set password=?   where  id=? ";
-		changepassword=new  ChangePassword(id,password,sql);
+		
+		changepassword=new  ChangePassword(id,password,service);
 		stuinfo=new  InputStuInfo();
 		qustuinfor=new StudentInformationQU();
 		rate=new  EmployRate();

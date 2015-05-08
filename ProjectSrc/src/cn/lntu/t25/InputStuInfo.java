@@ -23,6 +23,7 @@ public class InputStuInfo extends  JPanel implements ActionListener ,ItemListene
 	 * 学校管理员录入企业信息
 	 */
 	private static final long serialVersionUID = 2596684801306957742L;
+	
 	private JLabel [] label={new JLabel("学号(*)"),new JLabel("姓名(*)"),new  JLabel("性别(*)"),new JLabel("身份证号(*)"),new JLabel("籍贯(*)"),new JLabel("学院(*)"),new JLabel("专业(*)"),new JLabel("联系方式")};
 	private  JTextField []  textfield={new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField() };
 	private JButton jbutton=new JButton("提交");
@@ -80,7 +81,19 @@ public class InputStuInfo extends  JPanel implements ActionListener ,ItemListene
 				JOptionPane.showMessageDialog(getParent(), "必填项不能为空");
 				textfield[0].requestFocus();
 			}
-			else{
+			else { 
+				String idnumber=textfield[0].getText();
+			    int  id=Integer.parseInt(idnumber.substring(2, 6));
+			        
+			if(!(id==majormap.get(majorbox.getSelectedItem()))){
+				
+				JOptionPane.showMessageDialog(getParent(), "学号与所选学院专业不一致");
+				
+				
+			}	
+			
+			else {
+			
 				student=new Student();
 				student.setId(Integer.valueOf(textfield[0].getText()));
 				student.setName(String.valueOf(textfield[1].getText()));
@@ -94,32 +107,38 @@ public class InputStuInfo extends  JPanel implements ActionListener ,ItemListene
 				if(!textfield[5].getText().equals("")){
 					student.setPhoneNumber((textfield[5].getText()));
 				}
-				else{student.setPhoneNumber("null");}
+				else{
+					student.setPhoneNumber("null");}
+				stuservice=new StudentService();
+				if(stuservice.saveStudent(student)){
+					JOptionPane.showMessageDialog(getParent(), "操作成功");
+					for(int i=0;i<textfield.length;i++){
+						if(i!=2&&i!=5&&i!=6)
+						textfield[i].setText("");}
+					
+				}
+				else{JOptionPane.showMessageDialog(getParent(), "操作失败");}
+				}
 			} 
-			
-		stuservice=new StudentService();
-		if(stuservice.saveStudent(student)){
-			JOptionPane.showMessageDialog(getParent(), "操作成功");
-			for(int i=0;i<textfield.length;i++){
-				if(i!=2&&i!=5&&i!=6)
-				textfield[i].setText("");
-			}
-			
 		}
-		else{
 			
-			JOptionPane.showMessageDialog(getParent(), "操作失败");
-		}
-		
-		}
 		if(e.getSource()==textfield[0]){
+			
+			try{@SuppressWarnings("unused")
+			int id=Integer.parseInt(textfield[0].getText());	
+			if(textfield[0].getText().toString().length()!=10){
+				JOptionPane.showMessageDialog(getParent(), "学号格式错误");
+			}
+			}catch(Exception e1){
+				JOptionPane.showMessageDialog(getParent(), "学号格式错误");
+				
+			}
 			if(textfield[0].getText().equals("")){
 				JOptionPane.showMessageDialog(getParent(), "学号不能为空");
 				textfield[0].requestFocus();
 			}
-			if(textfield[0].getText().toString().length()!=10){
-				JOptionPane.showMessageDialog(getParent(), "学号格式错误");
-			}
+			
+			
 			else{	textfield[1].requestFocus();
 		}}
 		
@@ -155,8 +174,9 @@ public class InputStuInfo extends  JPanel implements ActionListener ,ItemListene
 		if(e.getSource()==textfield[7]){
 			jbutton.requestFocus();
 		}
+		}
 		
-	}
+	
 
 	
 	@Override
@@ -282,26 +302,38 @@ class StudentInformationQU extends  JPanel  implements ActionListener,Runnable{
 				textfield[0].requestFocus();
 			}
 			else{
-			int id=Integer.parseInt(textfield[0].getText());
-			service=new StudentService();
-			student=service.queryStudent(id);
-			textfield[1].setText(student.getName());
-			textfield[2].setText(student.getIdNumber());
-			textfield[3].setText(student.getSex());
-			textfield[4].setText(student.getAddress());
-			CollegeService collegeservice = new CollegeService();
-			College college = collegeservice.queryCollege(student.getCollege());
-			textfield[5].setText(college.getName());
-			MajorService majorservice=new MajorService();
-			Major major=majorservice.queryMajor(student.getMajor());
-			textfield[6].setText(major.getName());
-			textfield[7].setText(student.getPhoneNumber());
-			textfield[8].setText(student.isEmployment());
-			textfield[1].setEditable(true);
-			textfield[4].setEditable(true);
-			textfield[7].setEditable(true);
-			update.setVisible(true);
-			delete.setVisible(true);
+				int id = 0;
+			try{ 
+				String str=textfield[0].getText();
+				if(str.length()!=10)
+					JOptionPane.showMessageDialog(getParent(), "学号格式错误");
+				else{
+				id=Integer.parseInt(textfield[0].getText());
+				service=new StudentService();
+				student=service.queryStudent(id);
+				textfield[1].setText(student.getName());
+				textfield[2].setText(student.getIdNumber());
+				textfield[3].setText(student.getSex());
+				textfield[4].setText(student.getAddress());
+				CollegeService collegeservice = new CollegeService();
+				College college = collegeservice.queryCollege(student.getCollege());
+				textfield[5].setText(college.getName());
+				MajorService majorservice=new MajorService();
+				Major major=majorservice.queryMajor(student.getMajor());
+				textfield[6].setText(major.getName());
+				textfield[7].setText(student.getPhoneNumber());
+				textfield[8].setText(student.isEmployment());
+				textfield[1].setEditable(true);
+				textfield[4].setEditable(true);
+				textfield[7].setEditable(true);
+				update.setVisible(true);
+				delete.setVisible(true);
+				}}
+			catch(Exception e1){
+				JOptionPane.showMessageDialog(getParent(), "学号格式错误");
+			}
+			
+			
 		}}
 		if(e.getSource()==update){
 			int choose=JOptionPane.showConfirmDialog(getParent(), "你确认要更新!");

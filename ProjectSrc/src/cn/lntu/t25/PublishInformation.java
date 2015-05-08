@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -125,8 +126,17 @@ for(int i=0;i<jtext.length;i++){
 				JOptionPane.showMessageDialog(getParent(), "必填项不能为空");
 				jtext[3].requestFocus();
 			}
-			else{textarea.requestFocus();;
-		}
+			else{	
+				try{
+					@SuppressWarnings("unused")
+					int id=Integer.parseInt(jtext[3].getText());
+			          textarea.requestFocus();}
+		
+			catch(Exception e1){
+				JOptionPane.showMessageDialog(getParent(), "请输入数字");
+			}}
+		
+		
 			
 		}
 	    if(e.getSource()==button){
@@ -138,6 +148,7 @@ for(int i=0;i<jtext.length;i++){
 	    	}
 	    	
 	    	else{
+	    		
 	    		job=new Job();
 	    		job.setEnterId(id);
 	    		job.setJobName(jtext[0].getText().toString());

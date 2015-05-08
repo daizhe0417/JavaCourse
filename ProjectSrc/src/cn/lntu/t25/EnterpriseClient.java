@@ -22,7 +22,7 @@ public class EnterpriseClient extends JFrame implements MainFrame{
 	 */
 	private static final long serialVersionUID = -4291512066492333923L;
     private  Integer id;
-    private String password,sql;
+    private String password;
     private  DefaultMutableTreeNode  root=new  DefaultMutableTreeNode(new MyNode("菜单",0));
     private  DefaultMutableTreeNode  root1=new  DefaultMutableTreeNode(new MyNode("信息管理",1)); 
     private  DefaultMutableTreeNode  root2=new  DefaultMutableTreeNode(new MyNode("系统管理",2));
@@ -40,6 +40,7 @@ public class EnterpriseClient extends JFrame implements MainFrame{
     private  Welcome  welcome;
     private  PublishInformation publish;
     private EnterpriseProcess  enterprocess;
+    private  EnterUserService  service=new EnterUserService();
 	EnterpriseClient(int id,String password){
 		
 		this.id = id;
@@ -123,8 +124,7 @@ public class EnterpriseClient extends JFrame implements MainFrame{
 	@Override
 	public void initialPanel() {
 		welcome =new Welcome();
-	    sql="update  enter_user set password=?   where  id=?";
-	    change=new ChangePassword(id,password,sql);
+	    change=new ChangePassword(id,password,service);
 		publish=new PublishInformation(id);
 		enterprocess=new EnterpriseProcess(id);
 	}

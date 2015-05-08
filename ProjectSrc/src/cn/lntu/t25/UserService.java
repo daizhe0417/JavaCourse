@@ -8,8 +8,14 @@ import java.sql.SQLException;
 
 
 //对用户表的查询
+interface  Service{
+	public   Object queryUser(int id);
+	public  boolean  update(String  password,int id);
+	
+}
 
-class StuUserService {
+
+class StuUserService implements Service{
 	private Connection conn;
 	private PreparedStatement state;
 	private StuUser  stuUser;
@@ -65,7 +71,7 @@ class StuUserService {
 
 
 
-class  AdminUserService {
+class  AdminUserService implements Service{
 	
 	private Connection conn;
 	private PreparedStatement state;
@@ -124,7 +130,7 @@ class  AdminUserService {
 
 
 
-class  EnterUserService{
+class  EnterUserService implements Service{
 	
 	private Connection conn;
 	private PreparedStatement state;
@@ -159,7 +165,7 @@ class  EnterUserService{
 	}
 	public  boolean  update(String password,int id){
 		boolean  flag=true;
-		String sql="update  enter_user set password=?   where  id=? ";
+		String sql="update  enter_user set password=?   where  id=?";
 		conn=DatabaseConnection.getConnection();
 		try {
 			state=conn.prepareStatement(sql);
