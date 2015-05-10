@@ -1,4 +1,4 @@
-package cn.lntu.t34;
+package bookmanage;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -14,32 +14,32 @@ public  class  mainJFrame extends JFrame {
 	public mainJFrame(){
 		container=getContentPane();
 		JMenuBar Mbar=new JMenuBar();
-		JMenu Systemmenu=new JMenu("ϵͳ");
-		JMenu Loginmenu=new JMenu("��¼");
-		JMenu Browsemenu=new JMenu("���ͼ��");
-		JMenu Feedback=new JMenu("���Է���");
-		JMenu Helpmenu=new JMenu("����");
-		//ϵͳ�˵�
-		JMenuItem Aboutsystem=new JMenuItem("����ϵͳ");
-		JMenuItem SystemExit=new JMenuItem("�˳�");
+		JMenu Systemmenu=new JMenu("系统");
+		JMenu Loginmenu=new JMenu("登录");
+		JMenu Browsemenu=new JMenu("浏览图书");
+		JMenu Feedback=new JMenu("留言反馈");
+		JMenu Helpmenu=new JMenu("帮助");
+		//系统菜单
+		JMenuItem Aboutsystem=new JMenuItem("关于系统");
+		JMenuItem SystemExit=new JMenuItem("退出");
 		Systemmenu.add(Aboutsystem);Systemmenu.add(SystemExit);
-		//��¼�˵�
-		JMenuItem UserLogin=new JMenuItem("�û����");
-		JMenuItem ManageLogin=new JMenuItem("�������");
+		//登录菜单
+		JMenuItem UserLogin=new JMenuItem("用户入口");
+		JMenuItem ManageLogin=new JMenuItem("管理入口");
 		Loginmenu.add(UserLogin);Loginmenu.add(ManageLogin);
-		//���Բ˵�
-		JMenuItem Aboutfeed=new JMenuItem("��������");
-	    JMenuItem Browsefeed=new JMenuItem("�������");
+		//留言菜单
+		JMenuItem Aboutfeed=new JMenuItem("关于留言");
+	    JMenuItem Browsefeed=new JMenuItem("浏览留言");
 	    Feedback.add(Aboutfeed);Feedback.add(Browsefeed);
-	    //����˵�
-	    JMenuItem Abouthelp=new JMenuItem("���ڰ���");
-	    JMenuItem ContactWe=new JMenuItem("��ϵ����");
+	    //帮助菜单
+	    JMenuItem Abouthelp=new JMenuItem("关于帮助");
+	    JMenuItem ContactWe=new JMenuItem("联系我们");
 	    Helpmenu.add(Abouthelp);Helpmenu.add(ContactWe);
-	    //��Ӳ˵�
+	    //添加菜单
 	    Mbar.add(Systemmenu);Mbar.add(Loginmenu);
 	    Mbar.add(Browsemenu);Mbar.add(Feedback);
 	    Mbar.add(Helpmenu);
-	    //��Ӽ����¼�
+	    //添加监听事件
 	    SystemExit.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e)
 	    	{
@@ -50,11 +50,11 @@ public  class  mainJFrame extends JFrame {
 	    Aboutsystem.addActionListener(new ActionListener(){	    
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO �Զ���ɵķ������
+				// TODO 自动生成的方法存根
 				  JDialog jd=new JDialog();
-	 	    	  jd.setTitle("ϵͳ");
-	 	    	  JLabel jl=new JLabel("��ϵͳ������xx�꣬��xx������");
-	              JLabel jl1=new JLabel("��ϵͳ����ͼ����?����ҵ�����");
+	 	    	  jd.setTitle("系统");
+	 	    	  JLabel jl=new JLabel("该系统制作于xx年，有xx人制作");
+	              JLabel jl1=new JLabel("该系统用于图书管理，非商业软件！");
 	              JPanel panel=new JPanel();
 	              JPanel part1=new JPanel();
 	              JPanel part2=new JPanel();
@@ -74,7 +74,7 @@ public  class  mainJFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO �Զ���ɵķ������
+				// TODO 自动生成的方法存根
 				new Login().userlogin();
 				
 			}
@@ -84,7 +84,7 @@ public  class  mainJFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO �Զ���ɵķ������
+				// TODO 自动生成的方法存根
 				new ManageLogin();
 			}
 	    	
@@ -92,7 +92,7 @@ public  class  mainJFrame extends JFrame {
 	    setJMenuBar(Mbar);
 	    panelicon.setIcon(new ImageIcon("1.gif"));
         container.add(panelicon);
-	    setTitle("XXͼ���");
+	    setTitle("XX图书馆");
 	    setBounds(350,130,600,400);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setVisible(true);

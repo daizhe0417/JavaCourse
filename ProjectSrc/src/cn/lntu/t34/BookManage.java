@@ -1,4 +1,4 @@
-package cn.lntu.t34;
+package bookmanage;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.awt.*;
@@ -14,27 +14,27 @@ public class BookManage extends JFrame/*JInternalFrame*/ implements ActionListen
 	JLabel bcodel,bnamel,btypel,bpressl,bpricel,storageTime;
 	DateChooserJButton storageDate;*/
 	public BookManage(){
-		super("ͼ����Ϣ����");
+		super("图书信息中心");
 		JPanel panel1 = new JPanel();
 		
 		panel1.setLayout(new GridLayout(3,5));
-		JLabel label1=new JLabel("ͼ����:",SwingConstants.CENTER);
+		JLabel label1=new JLabel("图书编号:",SwingConstants.CENTER);
 		JTextField tf1=new JTextField();
 		panel1.add(label1);panel1.add(tf1);
 		
-	    label1=new JLabel("ͼ�����:",SwingConstants.CENTER);
+	    label1=new JLabel("图书名称:",SwingConstants.CENTER);
 	    JTextField tf2=new JTextField();	    
 		panel1.add(label1);panel1.add(tf2);
-		label1=new JLabel("ͼ������:",SwingConstants.CENTER);
+		label1=new JLabel("图书类型:",SwingConstants.CENTER);
 		JTextField tf3=new JTextField();
 		panel1.add(label1);panel1.add(tf3);
-		label1=new JLabel("ͼ��۸�:",SwingConstants.CENTER);
+		label1=new JLabel("图书价格:",SwingConstants.CENTER);
 		JTextField tf4=new JTextField();
 		panel1.add(label1);panel1.add(tf4);
-		label1=new JLabel(" ��   ��  ��:",SwingConstants.CENTER);
+		label1=new JLabel(" 出   版  社:",SwingConstants.CENTER);
 		JTextField tf5=new JTextField();
 		panel1.add(label1);panel1.add(tf5);
-		label1=new JLabel("�������:",SwingConstants.CENTER);
+		label1=new JLabel("入库日期:",SwingConstants.CENTER);
 	    
 		Date date=new Date();
 		String dateFormateStr="yyyy-MM-dd"+"  "+"E";
@@ -46,24 +46,26 @@ public class BookManage extends JFrame/*JInternalFrame*/ implements ActionListen
 		panel1.add(label1);panel1.add(tf6);
 		tf6.addFocusListener(new FocusL());
 		
-		JButton b1=new JButton("���");
-		JButton b2=new JButton("�޸�");
-		JButton b3=new JButton("ɾ��");
-		JButton b4=new JButton("�˳�");
+		JButton b1=new JButton("添加");
+		JButton b2=new JButton("修改");
+		JButton b3=new JButton("删除");
+		JButton b4=new JButton("退出");
 		b1.addActionListener(this);b2.addActionListener(this);
 		b3.addActionListener(this);b4.addActionListener(this);
 		JPanel panel2=new JPanel();
 		panel2.add(b1);panel2.add(b2);panel2.add(b3);panel2.add(b4);
 		JPanel panel3=new JPanel();
-		Object [][] tableDate=new Object[5][6];
-		for(int i=0;i<5;i++)
+		Object [][] tableDate=new Object[20][6];
+		
+		for(int i=0;i<10;i++)
 		{
 			tableDate[i][0]="08100"+i;
 			for(int j=1;j<6;j++)
 			{	tableDate[i][j]=0;}
 		}
-		String[] name={"ͼ����","ͼ�����","ͼ������","ͼ��۸�","��      ��     ��","���ʱ��"};
+		String[] name={"图书编号","图书名称","图书类型","图书价格","出      版     社","入库时间"};
 		JTable table=new JTable(tableDate,name);
+		panel3.add(new JScrollPane(table));
 		
 		this.setLayout(new BorderLayout());
 		this.add(panel1,BorderLayout.NORTH);
@@ -98,10 +100,10 @@ public class BookManage extends JFrame/*JInternalFrame*/ implements ActionListen
 	public void actionPerformed(ActionEvent e)
 	{
 		String cmd=e.getActionCommand();
-		if(cmd.equals("�˳�"))dispose();
-		else if(cmd.equals("���")){}
-		else if(cmd.equals("�޸�")){}
-		else if(cmd.equals("ɾ��")){}
+		if(cmd.equals("退出"))dispose();
+		else if(cmd.equals("添加")){}
+		else if(cmd.equals("修改")){}
+		else if(cmd.equals("删除")){}
 	}
 	
 	public static void main(String [] args){

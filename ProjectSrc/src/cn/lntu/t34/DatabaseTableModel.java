@@ -1,8 +1,8 @@
-package cn.lntu.t34;
+package bookmanage;
 import javax.swing.table.AbstractTableModel;
 import java.sql.*;
 public class DatabaseTableModel {
-	//��������ͨ��ģ��
+	//制作表格的通用模板
 	ResultSet rs;
 	 public DatabaseTableModel(ResultSet rs){
 	  this.rs=rs;

@@ -1,4 +1,4 @@
-package cn.lntu.t34;
+package bookmanage;
 import java.sql.*;
 
 import java.nio.charset.*;
@@ -14,12 +14,12 @@ public class ConnectDataBase {
 	     Class.forName("com.mysql.jdbc.Driver");
 	     conn=DriverManager.getConnection(strUrl);
 	     conn=DriverManager.getConnection(strUrl);
- //        System.out.println("��ݿ����ӳɹ���");
+ //        System.out.println("数据库连接成功！");
 	     }
 	  catch (ClassNotFoundException ex){ex.printStackTrace();}
 	  catch (SQLException e){
 		  e.printStackTrace();
-	//	  System.out.println("��ݿ�����ʧ�ܣ�");
+	//	  System.out.println("数据库连接失败！");
 	  }
 	  
 	  return conn;
@@ -33,15 +33,15 @@ public class ConnectDataBase {
 	public static void main(String [] args){
 		try{
 	         Class.forName("com.mysql.jdbc.Driver");
-	         System.out.println("�ɹ�����MySQL�����");
+	         System.out.println("成功加载MySQL驱动程序");
 	         String url="jdbc:mysql://localhost:3306/company?"+"user=root&password=dsy1672";
 	         Connection conn=DriverManager.getConnection(url);
 	         String[] str=new String[5];
 	         
-	         System.out.println("��ݿ����ӳɹ�");
+	         System.out.println("数据库连接成功");
 	       } 
 	     catch (Exception e){
-	                         System.out.println("�Ҳ���MySQL�����"); 
+	                         System.out.println("找不到MySQL驱动程序"); 
 	                         }
 	   }
 	public void login(){
@@ -53,7 +53,7 @@ public class ConnectDataBase {
 		        Statement st=conn.createStatement();
 		   //     ResultSet rs=st.executeQuery("select * from administrator");
 		        ResultSet rs=st.executeQuery("select * from administrator");
-		        System.out.println("�˻����           �˻����   �˻�����  ��ϵ��ʽ   Ȩ�޼���");
+		        System.out.println("账户序号           账户名称   账户密码  联系方式   权限级别");
 		        while(rs.next()){
 		          System.out.print(+rs.getInt(1)+"  ");
 		          System.out.print(rs.getString(2)+"  ");

@@ -1,4 +1,4 @@
-package cn.lntu.t34;
+package bookmanage;
 import javax.swing.*;
 import java.awt.*;
 public class MakeComponent {

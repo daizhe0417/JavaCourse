@@ -114,6 +114,7 @@ public class DateChooser extends JPanel implements ActionListener,ChangeListener
      }
    return result;
   }
+  
 @Override
 public void stateChanged(ChangeEvent e) {
 	// TODO �Զ���ɵķ������
@@ -127,6 +128,12 @@ public void actionPerformed(ActionEvent e) {
 
 
  public static void main(String [] args){
+	 JFrame frame=new JFrame("ʱ���");
+	 frame.setSize(300,200);
+	 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+	 Container c=frame.getContentPane();
+	 c.add(new DateChooser());
+	 frame.setVisible(true);
 	 
 	 
  }
