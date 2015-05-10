@@ -20,6 +20,14 @@ public class Jsrxx {
 	{ return this.jsrname; }
 	public String getphone()
 	{ return this.phone; }
+	void insert(Jsrxx z)               //实现增加接口方法
+	{z.set(z.jsrnumber, z.jsrname,z.phone);}
+	void updata(String n,Jsrxx z)    //实现修改接口方法
+	{if(this.jsrnumber==n)
+		{ this.jsrnumber=z.jsrnumber;
+	      this.jsrname=z.jsrname;
+	      this.phone=z.phone;}
+	}
 
 
 }

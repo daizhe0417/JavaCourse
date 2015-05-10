@@ -19,7 +19,14 @@ public class Yrdw {
 	public String getdwname()
 	{ return this.dwname; }
 	public String getzynumber(Zyfl zyfl)
-	{ return this.zyfl.getZylxnumber(); 
-		}
+	{ return this.zyfl.getZylxnumber(); }
+	void insert(Yrdw z)        //实现增加接口方法
+	{z.set(z.dwnumber, z.dwname,z.zyfl);}
+	void updata(String n,Yrdw z)    //实现修改接口方法
+	{if(this.dwnumber==n)
+		{ this.dwnumber=z.dwnumber;
+	      this.dwname=z.dwname;
+	      this.zyfl=z.zyfl;}
+	}
 
 }

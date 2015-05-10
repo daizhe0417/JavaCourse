@@ -40,5 +40,18 @@ public class Zyxx {
 	{ return this.xqrs; }
 	public int getgz()
 	{ return this.gz; }
+	void insert(Zyxx z)            //实现增加接口方法
+	{z.set(z.zynumber, z.zyname,z.yrdw,z.zyfl,z.zyyq,z.yprs,z.xqrs,z.gz);}
+	void updata(String n,Zyxx z)    //实现修改接口方法
+	{if(this.zynumber==n)
+	   { this.zynumber=z.zynumber;
+         this.zyname=z.zyname;
+         this.yrdw=z.yrdw;
+         this.zyfl=z.zyfl;
+         this.zyyq=z.zyyq;
+         this.yprs=z.yprs;
+         this.xqrs=z.xqrs;
+         this.gz=z.gz;}
+	}
 
 }

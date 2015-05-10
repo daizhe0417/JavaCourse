@@ -31,5 +31,16 @@ public class Fygl {
 	{ return this.dwjf;}
 	public int getqzzjf()
 	{ return this.qzzjf;}
+	void insert(Fygl z)           //实现增加接口方法
+	{z.set(z.zyfl,z.yrdw,z.qzzxx,z.jsrxx,z.dwjf,z.qzzjf);}
+	void updata(String n,Fygl z)    //实现修改接口方法
+	{if(this.zyfl.getZylxnumber()==n)
+		{ this.zyfl=z.zyfl;
+	      this.yrdw=z.yrdw;
+	      this.qzzxx=z.qzzxx;
+	      this.jsrxx=z.jsrxx;
+	      this.dwjf=z.dwjf;
+	      this.qzzjf=z.qzzjf;}
+	}
 
 }

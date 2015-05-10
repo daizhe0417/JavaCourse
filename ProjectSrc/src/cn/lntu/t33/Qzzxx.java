@@ -31,5 +31,16 @@ public class Qzzxx {
 	{ return this.piny; }
 	public int getyuex()
 	{ return this.yuex;}
+	void insert(Qzzxx z)        //实现增加接口方法
+	{z.set(z.qzznumber, z.name, z.sex, z.gdzy, z.piny, z.yuex);}
+	void updata(String n,Qzzxx z)    //实现修改接口方法
+	{if(this.qzznumber==n)
+		{ this.qzznumber=z.qzznumber;
+	      this.name=z.name;
+	      this.sex=z.sex;
+	      this.gdzy=z.gdzy;
+	      this.piny=z.piny;
+	      this.yuex=z.yuex;}
+	}
 
 }
