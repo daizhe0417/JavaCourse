@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/javaExternalJar/MySql/mysql-connector-java-5.1.26/mysql-connector-java-5.1.26-bin.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_40"/>
+	<classpathentry kind="lib" path="F:/我的资料/学习资料/软件编程学习资料/android资料/jar/mysql-connector-java-5.1.26-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/android"/>
+	<classpathentry kind="lib" path="F:/我的资料/学习资料/软件编程学习资料/android资料/jar/mariadb-java-client-1.1.5.jar"/>
+	<classpathentry kind="lib" path="G:/项目/android/SCloud_79/libs/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
