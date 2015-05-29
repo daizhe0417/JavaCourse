@@ -1,10 +1,13 @@
 package test.part1;
 
+/**
+ * 下面程序是否会导致错误，若有，那行出错，原因何在
+ * 
+ * @author daizhe
+ *
+ */
 public class test120 {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		String str = null;
 		if ((str != null) && (str.length() > 10)) {

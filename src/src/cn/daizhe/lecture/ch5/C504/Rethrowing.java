@@ -13,7 +13,7 @@ public class Rethrowing {
 		throw new Exception("thrown from f()");
 	}
 
-	public static void g() throws Throwable {
+	public static void g(){
 		try {
 			f();
 		} catch (Exception e) {

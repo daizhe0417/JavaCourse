@@ -5,47 +5,48 @@ package cn.daizhe.lecture.ch6.C602;
  * @author venice
  * @version 2012-05-03
  */
+//ÊÂ¼þ´¦Àí
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
-//ActionEventTestï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ActionListenerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ActionEventTestÀàÊµÏÖÁËActionListener½Ó¿Ú£¬Ôò¿ÉÒÔ×÷Îª¼àÊÓÆ÷
 public class ActionEventTest1 extends Applet implements ActionListener {
 	TextField text1, text2, text3;
 
-	// appletï¿½Ä¹æ¶¨ï¿½ï¿½ï¿½ï¿½initï¿½ï¿½Ê¼ï¿½ï¿½
+	// appletµÄ¹æ¶¨·½·¨init³õÊ¼»¯
 	public void init() {
 		text1 = new TextField(10);
 		text2 = new TextField(10);
 		text3 = new TextField(10);
-		this.add(text1);
+		add(text1);
 		add(text2);
 		add(text3);
-		text1.addActionListener(this);// Îªï¿½Â¼ï¿½Ô´ï¿½Ä±ï¿½ï¿½ï¿½text1×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		text2.addActionListener(this);// Îªï¿½Â¼ï¿½Ô´ï¿½Ä±ï¿½ï¿½ï¿½text2×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		text1.addActionListener(this);// ÎªÊÂ¼þÔ´ÎÄ±¾¿òtext1×¢²á¼àÊÓÆ÷
+		text2.addActionListener(this);// ÎªÊÂ¼þÔ´ÎÄ±¾¿òtext2×¢²á¼àÊÓÆ÷
 	}
 
-	// Êµï¿½ï¿½ActionListenerï¿½Ó¿ÚµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	public void actionPerformed(ActionEvent e)// eï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÊµÏÖActionListener½Ó¿ÚµÄ·½·¨£¬¼´ÊÂ¼þ´¦ÀíÆ÷
+	public void actionPerformed(ActionEvent e)// eÊÇÊÂ¼þ¶ÔÏó
 	{
-		if (e.getSource() == text1)// getSource()ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Â¼ï¿½Ô´
+		if (e.getSource() == text1)// getSource()·½·¨È¡µÃÊÂ¼þÔ´
 		{
 			String str = text1.getText();
 			if (str.equals("boy")) {
-				text3.setText("ï¿½Ðºï¿½");
+				text3.setText("ÄÐº¢");
 			} else if (str.equals("girl")) {
-				text3.setText("Å®ï¿½ï¿½");
+				text3.setText("Å®º¢");
 			} else {
-				text3.setText("Ã»ï¿½Ð¸Ãµï¿½ï¿½ï¿½");
+				text3.setText("Ã»ÓÐ¸Ãµ¥´Ê");
 			}
 		} else if (e.getSource() == text2) {
 			String str = text2.getText();
-			if (str.equals("ï¿½Ðºï¿½")) {
+			if (str.equals("ÄÐº¢")) {
 				text3.setText("boy");
-			} else if (str.equals("Å®ï¿½ï¿½")) {
+			} else if (str.equals("Å®º¢")) {
 				text3.setText("girl");
 			} else {
-				text3.setText("Ã»ï¿½Ð¸Ãµï¿½ï¿½ï¿½");
+				text3.setText("Ã»ÓÐ¸Ãµ¥´Ê");
 			}
 		}
 	}

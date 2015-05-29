@@ -35,7 +35,7 @@ public class StudentFile {
 			// 输入流未结束时
 			try {
 				Student stu = (Student) objin.readObject(); // 读取一个对象
-				System.out.println(stu.getName() + "  ");
+				System.out.println(stu.toString());
 			} catch (Exception e) {
 				break;
 			}

@@ -30,6 +30,6 @@ public class ImageTest extends Frame {
 	}
 
 	public void paint(Graphics g) {
-		this.getGraphics().drawImage(img, 0, 0, this);
+		this.getGraphics().drawImage(img, 10, 40, this);
 	}
 }

@@ -9,7 +9,7 @@ public class DaemonDemo {
 		// 创建Thread类实例，即创建线程
 		Thread tt = new Thread(t);
 		// setDaemon方法使该线程成为后台线程
-		tt.setDaemon(true);
+//		tt.setDaemon(true);
 		System.out.println(Thread.currentThread().getName() + " start!");
 		// 线程开始运行
 		tt.start();
@@ -34,7 +34,7 @@ class DaemonThread implements Runnable {
 				e.printStackTrace();
 			}
 			System.out
-					.println(Thread.currentThread().getName() + " is running");
+					.println(Thread.currentThread().getName() +i+ " is running");
 		}
 	}
 }

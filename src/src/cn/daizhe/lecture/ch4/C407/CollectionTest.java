@@ -24,8 +24,11 @@ public class CollectionTest {
 		}
 		int sum = 0;
 		Iterator itr = al.iterator();
+		for(int i=0;i<al.size();i++){
+			al.get(i);
+		}
 		while (itr.hasNext()) {
-//			al.get(8);
+			al.get(8);
 			Integer intObj = (Integer) itr.next();
 			System.out.println(intObj.toString());
 			sum += intObj.intValue();

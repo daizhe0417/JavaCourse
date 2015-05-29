@@ -24,6 +24,7 @@ public class ExceptionMethods {
 			// printStackTrace方法
 			System.err.println("e.printStackTrace():");
 			e.printStackTrace(System.err);
+			
 		}
 	}
 }

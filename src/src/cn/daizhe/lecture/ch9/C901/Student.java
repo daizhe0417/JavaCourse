@@ -13,7 +13,7 @@ public class Student implements java.io.Serializable // 序列化
 	}
 
 	public String toString() {
-		return this.number + "  " + this.name;
+		return this.number + "  " + this.name+"  "+this.count;
 	}
 	public String getName(){
 		return name;

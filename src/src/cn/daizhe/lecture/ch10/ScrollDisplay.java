@@ -56,13 +56,13 @@ public class ScrollDisplay extends JFrame implements ActionListener {
 			ResultSet rs = stmt.executeQuery(newSQL);
 			rs.next();
 			int rowCount = rs.getInt(1);
-			if (rowCount > Row) {
+			if (rowCount >= Row) {
 				// 创建一个可滚动但不可更新的结果集
 				stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 						ResultSet.CONCUR_READ_ONLY);
 				SQL = "SELECT * FROM stu";
 				rs = stmt.executeQuery(SQL);
-				if (rs == null || rs.getRow() > Row) {
+				if (rs == null || rs.getRow() >= Row) {
 					taInfo.setText("暂无记录");
 				} else {
 					rs.absolute(Row);// 将游标移到指定的行

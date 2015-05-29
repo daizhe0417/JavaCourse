@@ -41,8 +41,8 @@ public class QueryStudent extends JFrame {
 				taInfo.append(rs.getString("id") + "\t");
 				taInfo.append(rs.getString("name") + "\t");
 				taInfo.append(rs.getString("age") + "\t");
-				taInfo.append(rs.getString("dept") + "\n");
-				taInfo.append(rs.getString("sex") + "\n");
+				taInfo.append(rs.getString("dept") + "\t");
+				taInfo.append(rs.getString("sex") + "\t");
 			}
 			rs.close();
 			stmt.close();

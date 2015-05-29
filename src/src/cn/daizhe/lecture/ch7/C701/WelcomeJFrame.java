@@ -131,7 +131,7 @@ public class WelcomeJFrame extends JFrame {
 	}
 
 	public static void main(String arg[]) {
-		String[] texts = { "Welcome", "Hello", "Rollby" ,"dsfkdsf"};
+		String[] texts = { "Welcome", "Hello", "dsfkdsf"};
 		new WelcomeJFrame(texts);
 	}
 }

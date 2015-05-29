@@ -13,10 +13,13 @@ public class ThreadDemo1 {
 		// new TestThread().run();
 		// 多线程的情况
 		new TestThread().start();
-		for (int i = 0; i < 10; i++) {
-			System.out.println("main" + Thread.currentThread().getName()
+		new TestThread().start();
+		for (int i = 0; i < 1000; i++) {
+			System.out.println("main：" + Thread.currentThread().getName()
 					+ " is running");// *
 		}
+
+		System.out.println("main thread end");
 	}
 }
 
@@ -24,10 +27,15 @@ public class ThreadDemo1 {
 // class TestThread
 // 多线程的情况
 class TestThread extends Thread {
+	private int i=0;
+	
 	public void run()// run方法在start方法使线程开始运行后自动调用
 	{
-		for (int i = 0; i < 10; i++) {
-			System.out.println("child" + Thread.currentThread().getName()
+		// 单线程
+		// for (int i = 0;; i++) {
+		// 多线程
+		for (int i = 0; i < 1000; i++) {
+			System.out.println("child：" + Thread.currentThread().getName()
 					+ " is running");// *
 		}
 	}

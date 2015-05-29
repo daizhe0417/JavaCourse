@@ -7,18 +7,18 @@ package cn.daizhe.lecture.ch3.C305;
  * @version 2013
  */
 public class StaticTest1 {
-	public static void main(String args[]) {
-		// 创建3个学生实例，Student类中num是否是static的效果不同
-		Student s1 = new Student("zhang");
-		Student s2 = new Student("wang");
-		Student s3 = new Student("wang");
-		System.out.println("number of students:" + s1.getNum());
-		System.out.println("number of students:" + s2.getNum());
-		System.out.println("number of students:" + s3.getNum());
-		System.out.println("id of s1 is " + s1.getID());
-		System.out.println("id of s2 is " + s2.getID());
-		System.out.println("id of s3 is " + s3.getID());
-	}
+//	public static void main(String args[]) {
+//		// 创建3个学生实例，Student类中num是否是static的效果不同
+//		Student s1 = new Student("zhang");
+//		Student s2 = new Student("wang");
+//		Student s3 = new Student("wang");
+//		System.out.println("number of students:" + s1.getNum());
+//		System.out.println("number of students:" + s2.getNum());
+//		System.out.println("number of students:" + s3.getNum());
+//		System.out.println("id of s1 is " + s1.getID());
+//		System.out.println("id of s2 is " + s2.getID());
+//		System.out.println("id of s3 is " + s3.getID());
+//	}
 }
 
 class Student {

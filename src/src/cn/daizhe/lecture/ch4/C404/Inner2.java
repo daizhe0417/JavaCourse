@@ -14,7 +14,7 @@ class Outer {
 	static int h = 10;
 
 	// 下一行的声明不可以，不允许内部类与外部类同名
-	// class Inner2 {
+	// class Outer {
 	// 内部类aa
 	class aa {
 		// 内部类也可以是静态的
@@ -76,7 +76,7 @@ class Outer {
 	static class dd {
 		static int j = 9;
 		{
-			// System.out.println(Outer.a);//静态内部类中不能访问外部类的非静态成员
+//			 System.out.println(Outer.this.a);//静态内部类中不能访问外部类的非静态成员
 			System.out.println(Outer.h);// 静态内部类中只能访问静态的外部类成员
 		}
 	}
@@ -104,9 +104,9 @@ public class Inner2 {
 		System.out.println(in.a);
 		// bb类是aa的私有内部类，不能在外部调用其构造方法创建实例
 		// 此时，bb类的所有内部成员和内部类都不能被访问
-//		Outer.aa.bb b = a.new bb();
-//		Outer.aa.bb.cc c = new Outer().new aa().new bb().new cc();
-//		c.cmethod();
-//		System.out.println("bb.b=" + new Outer().new aa().new bb().b);
+		// Outer.aa.bb b = a.new bb();
+		// Outer.aa.bb.cc c = new Outer().new aa().new bb().new cc();
+		// c.cmethod();
+		// System.out.println("bb.b=" + new Outer().new aa().new bb().b);
 	}
 }

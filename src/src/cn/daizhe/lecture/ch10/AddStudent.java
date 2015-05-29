@@ -69,6 +69,7 @@ public class AddStudent extends JFrame {
 			// rs.absolute(10);
 			rs.last();
 			rs.deleteRow();
+			rs = stmt.executeQuery(SQL);
 			taInfo.append("删除后的学生信息表\n");
 			while (rs.next()) {
 				taInfo.append(rs.getString("id") + "\t");
@@ -77,8 +78,6 @@ public class AddStudent extends JFrame {
 				taInfo.append(rs.getString("dept") + "\n");
 				taInfo.append(rs.getString("sex") + "\n");
 			}
-			rs.close();
-			rs = stmt.executeQuery(SQL);
 			rs.close();
 			stmt.close();
 		} catch (SQLException ex) {

@@ -66,15 +66,21 @@ public class StringTest {
 		// Java中的equals和==
 		String s = "hello";
 		String t = "hello";
-		char cc[] = { 'h', 'e', 'l', 'l', 'o' ,'\\','0'};
-		
+		char cc[] = { 'h', 'e', 'l', 'l', 'o', '\\', '0' };
+
+		String str7 = "hello";
+		String str8 = "he" + new String("llo");
+		// str8是新拼接出的字符串，所以未优化
+		System.out.println("str7 == str8" + (str7 == str8));
+
 		System.out.println("equals and ==");
 
-		System.out.println("s.equals(t): "+s.equals(t));// 
-		System.out.println("t.equals(cc): "+t.equals(cc));// 
-		System.out.println("t.equals(new String(\"hello\")): "+t.equals(new String("hello")));
-		System.out.println("s == t: "+(s == t));// s和t指向同一对象，这是编译器优化的结果
- 
+		System.out.println("s.equals(t): " + s.equals(t));//
+		System.out.println("t.equals(cc): " + t.equals(cc));//
+		System.out.println("t.equals(new String(\"hello\")): "
+				+ t.equals(new String("hello")));
+		System.out.println("s == t: " + (s == t));// s和t指向同一对象，这是编译器优化的结果
+
 		// 实际上两个引用指向不同对象时，==的结果应该是false，只有两个引用指向同一个对象时==才返回true
 		// 而equals是判读两个对象的内容是否相同
 		Person p1 = new Person("张三"), p2 = new Person("张三");

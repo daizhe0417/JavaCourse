@@ -4,10 +4,27 @@ import java.io.*;
 
 public class ByteFile {
 	private String filename; // 文件名
-	
+
 	// 构造方法，指定文件名
-	public ByteFile(String filename) {
-		this.filename = filename;
+//	public ByteFile(String filename) throws Exception {
+	public ByteFile(String filename){
+		if (filename != null && !filename.equals("")) {
+			this.filename = filename;
+		} else {
+//			throw new Exception();
+		}
+	}
+
+	public static ByteFile getInstance(String filename) {
+		if (filename != null && !filename.equals("")) {
+			try {
+				return new ByteFile(filename);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 	// 将缓冲区数据写入指定文件
