@@ -12,15 +12,8 @@ public class TextFile {
 	// 将Fibonacci序列值写入指定文本文件
 	public void writeToFile() throws IOException {
 		FileWriter fout = new FileWriter(this.filename);
-		int i = 0, j = 1, count = 0;
-		while (count < 20) {
-			fout.write(i + "  " + j + "  "); // 向文件字符输出流写入一个字符串
-			i = i + j;
-			j = i + j;
-			count += 2;
-			if (count % 10 == 0)
-				fout.write("\r\n"); // 写入一个回车换行符
-		}
+		String str = "asdfa";
+			fout.write(str); // 向文件字符输出流写入一个字符串
 
 		fout.close();
 		System.out.println("Write Fibonacci to File " + this.filename);
@@ -45,7 +38,7 @@ public class TextFile {
 	}
 
 	public static void main(String args[]) throws IOException {
-		TextFile afile = new TextFile("wu.ini");
+		TextFile afile = new TextFile("wu.txt");
 		afile.writeToFile();
 		afile.readFromFile();
 	}
