@@ -1,0 +1,9 @@
+哲学类、社会科学类、   Philosophy   Social_Sciences
+政治类、法律类、       Political,   Legal
+军事类、经济类、       Military ,   Economy 
+文化类、教育类、       Culture,     Education
+体育类、语言文字类、   Physical_education, Language
+艺术类、历史类、       Art ,       History
+地理类、天文学类、     Geography,   Astronomy
+生物学类、医学卫生类、 Biology, Medicine_health
+农业类、其他类         Agricultural , Other 
