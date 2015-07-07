@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/java/jar/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="D:/java/jar/mariadb-java-client-1.1.5.jar"/>
+	<classpathentry kind="lib" path="D:/java/jar/mysql-connector-java-5.1.26-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
