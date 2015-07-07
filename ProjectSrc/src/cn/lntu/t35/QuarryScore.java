@@ -3,7 +3,6 @@ package cn.lntu.t35;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,11 +98,6 @@ public class QuarryScore extends JPanel implements ActionListener{
 	   }
 		
 		
-	}
-
-	private AbstractButton DefaultTableModel(DefaultTableModel tModel2, int i) {
-		// TODO Auto-generated method stub
-		return null;
 	} 
 
 }
